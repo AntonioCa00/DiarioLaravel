@@ -16,15 +16,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-#ruta de controladorBD, Create
+//ruta de controladorBD, Create
 Route::get('recuerdo/create',[controladorBD::class,'create']) -> name('recuerdo.create');
 
-#ruta de controladorBD, Store
+//ruta de controladorBD, Store
 Route::post('recuerdo',[controladorBD::class,'store']) -> name('recuerdo.store');
 
-#Ruta de controladorBD, Index
+//Ruta de controladorBD, Index
 Route::get('Recuerdo',[controladorBD::class,'index']) -> name('recuerdo.index');
 
+//Ruta de controladorBD, Editar
+Route::get('Recuerdo/{id}/edit',[controladorBD::class,'edit']) ->name('recuerdo.edit');
+
+//Edit
+Route::put('Recuerdo/{id}',[controladorBD::class,'update']) ->name('recuerdo.update');
 
 /*Rutas Agrupadas*/
 Route::controller(controladorVistas::class)->group

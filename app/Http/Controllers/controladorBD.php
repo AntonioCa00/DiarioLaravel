@@ -30,7 +30,7 @@ class controladorBD extends Controller
     public function create()
     {
         //
-        return view("Registrar");
+        return view('Registrar');
     }
 
     /**
@@ -71,7 +71,8 @@ class controladorBD extends Controller
      */
     public function edit($id)
     {
-        //
+        $consultaID= DB::table('tb_recuerdos')->where('idRecuerdo',$id) ->first();
+        return view('editar',compact('consultaID'));
     }
 
     /**
@@ -81,9 +82,15 @@ class controladorBD extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(validadorDiario $request, $id)
     {
-        //
+        DB::table('tb_recuerdos') ->where('idRecuerdo',$id)-> update ([
+            "titulo"=>$request->input('txtTitulo'),
+            "recuerdo"=>$request->input('txtRecuerdo'),
+            "updated_at"=>Carbon::now(), 
+        ]);
+
+        return redirect('Recuerdo')->with('actualizar','abc');
     }
 
     /**
