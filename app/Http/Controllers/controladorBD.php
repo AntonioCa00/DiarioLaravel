@@ -49,19 +49,10 @@ class controladorBD extends Controller
             "updated_at"=>Carbon::now(), 
         ]);
 
-        return redirect('recuerdo/create')->with('confirmación,abc');
+        return redirect('recuerdo/create')->with('confirmacion,confirmacion');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+   
 
     /**
      * Show the form for editing the specified resource.
@@ -93,6 +84,13 @@ class controladorBD extends Controller
         return redirect('Recuerdo')->with('actualizar','abc');
     }
 
+    public function show($id)
+    {
+        $consultaID = DB::table('tb_recuerdos')->where('idRecuerdo',$id)->first();
+        return view('eliminar',compact('consultaID'));
+    }
+
+
     /**
      * Remove the specified resource from storage.
      *
@@ -101,6 +99,8 @@ class controladorBD extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('tb_recuerdos') ->where('idRecuerdo',$id)->delete();
+
+        return redirect('Recuerdo')->with('eliminado','Eliminado');
     }
 }

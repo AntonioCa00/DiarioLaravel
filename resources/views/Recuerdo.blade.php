@@ -6,10 +6,19 @@
     @if(session()->has('actualizar'))
             
             {!!" <script>Swal.fire(
-                'Registro Correcto!',
+                'Actualización Correcta!',
                 'Su recuerdo se actualizó!',
                 'success'
               )</script>"!!}
+    @endif
+
+    @if(session()->has('eliminado'))
+        
+        {!!" <script>Swal.fire(
+            'Eliminación Correcta!',
+            'Su recuerdo se eliminó!',
+            'success'
+          )</script>"!!}
     @endif
 
     <h1 class="display-2 mt-4 mb-4 text-center" style="color:aliceblue">CONSULTAR RECUERDOS</h1>
@@ -29,8 +38,8 @@
             </div>
 
             <div class="card-footer text-muted">
-              <a href="{{route('recuerdo.edit',$consulta->idRecuerdo)}}" class="btn btn-danger">A</a>
-              <a href="" class="btn btn-warning">E</a>
+              <a href="{{route('recuerdo.edit',$consulta->idRecuerdo)}}" class="btn btn-danger">Editar</a>
+              <a href="{{route('recuerdo.show',$consulta->idRecuerdo)}}" class="btn btn-warning">Eliminar</a>
             </div>
         </div>    
     </div>

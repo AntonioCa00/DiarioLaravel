@@ -3,7 +3,7 @@
 
 @section('contenido')
 
-    @if(session()->has('confirmación'))
+    @if(session()->has('confirmacion'))
         
         {!!" <script>Swal.fire(
             'Registro Correcto!',

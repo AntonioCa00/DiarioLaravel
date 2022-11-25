@@ -31,6 +31,13 @@ Route::get('Recuerdo/{id}/edit',[controladorBD::class,'edit']) ->name('recuerdo.
 //Edit
 Route::put('Recuerdo/{id}',[controladorBD::class,'update']) ->name('recuerdo.update');
 
+//vista delete
+Route::get('Recuerdo/{id}/show',[controladorBD::class,'show'])->name('recuerdo.show');
+
+//Delete
+Route::delete('recuerdo/{id}',[controladorBD::class,'destroy'])->name('recuerdo.destroy');
+
+
 /*Rutas Agrupadas*/
 Route::controller(controladorVistas::class)->group
     (function(){
